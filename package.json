@@ -1,0 +1,12 @@
+{
+	"name": "os_quiz",
+	"version": "1.0.0",
+	"description": "Kernel Quest online quiz app",
+	"scripts": {
+		"sass": "sass static/scss:static/styles",
+		"sass:watch": "sass --watch static/scss:static/styles"
+	},
+	"devDependencies": {
+		"sass": "^1.77.0"
+	}
+}
