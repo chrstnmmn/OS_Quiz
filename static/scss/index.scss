@@ -11,6 +11,10 @@ $shadow-pink: 0 0 19.3px 0 $pink-accent;
 $border-white: 1px solid $white-accent;
 $border-radius: 0.9375rem;
 
+* {
+	box-sizing: border-box; // ensures padding and borders are included in width
+}
+
 body {
 	background-color: $background-color;
 	font-family: $main-font;
@@ -18,12 +22,17 @@ body {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
-  flex-direction: column;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-  margin: 0;
+	margin: 0;
+  padding-inline: .5rem;
+
+  overflow-x: hidden;
 }
 
 .logo-container {
-	width: 100%;
+	svg {
+		width: 100%;
+	}
 }
