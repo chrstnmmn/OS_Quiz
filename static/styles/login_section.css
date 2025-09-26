@@ -30,6 +30,42 @@ body {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  outline: none;
+  border: nonegit;
+}
+.form-container .form .confirmation {
+  align-self: center;
+}
+.form-container .form .CTA-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.5rem;
+  height: 4rem;
+  border-radius: 0.9375rem;
+  border: 1px solid #ffffff;
+  background-color: #ff05b0;
+  box-shadow: 0 0 19.3px 0 #ff05b0;
+}
+.form-container .form .CTA-button h1 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.form-container .form .footer-login {
+  align-self: center;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-transform: uppercase;
 }
 
 /*# sourceMappingURL=login_section.css.map */
