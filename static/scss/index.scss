@@ -1,18 +1,29 @@
 // Base colors
 $background-color: #161616;
-$pink-accent: #FF05B0;
-$white-accent: #FFFFFF;
+$pink-accent: #ff05b0;
+$white-accent: #ffffff;
 
-// Font 
-$main-font: 'Inter', sans-serif;
+// Font
+$main-font: "Inter", sans-serif;
 
-// Effects 
+// Effects
 $shadow-pink: 0 0 19.3px 0 $pink-accent;
 $border-white: 1px solid $white-accent;
-$border-radiius: 0.9375rem;
-
+$border-radius: 0.9375rem;
 
 body {
-  background-color: $background-color;
-  font-family: $main-font;
+	background-color: $background-color;
+	font-family: $main-font;
+
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+  flex-direction: column;
+	align-items: center;
+	justify-content: center;
+  margin: 0;
+}
+
+.logo-container {
+	width: 100%;
 }

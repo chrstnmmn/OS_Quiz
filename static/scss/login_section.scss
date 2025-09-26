@@ -1,3 +1,23 @@
+@import "index.scss";
+
 .form-container {
-  
+	.form {
+		display: flex;
+		flex-direction: column;
+		row-gap: 0.5rem;
+
+		.name-input {
+			height: 3rem;
+			border-radius: $border-radius;
+			background-color: $white-accent;
+      padding-inline: 1rem;
+
+			color: $pink-accent;
+			font-family: $main-font;
+			font-size: 1.25rem;
+			font-style: normal;
+			font-weight: 700;
+			line-height: normal;
+		}
+	}
 }
