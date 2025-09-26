@@ -4,7 +4,10 @@
 	"description": "Kernel Quest online quiz app",
 	"scripts": {
 		"sass": "sass static/scss:static/styles",
-		"sass:watch": "sass --watch static/scss:static/styles"
+		"sass:watch": "sass --watch static/scss:static/styles",
+		"start": "python app.py",
+		"dev": "set FLASK_APP=app.py && set FLASK_ENV=development && flask run",
+		"export": "python -c \"from app import export_to_csv; export_to_csv()\""
 	},
 	"devDependencies": {
 		"sass": "^1.77.0"
