@@ -1,0 +1,18 @@
+// Base colors
+$background-color: #161616;
+$pink-accent: #FF05B0;
+$white-accent: #FFFFFF;
+
+// Font 
+$main-font: 'Inter', sans-serif;
+
+// Effects 
+$shadow-pink: 0 0 19.3px 0 $pink-accent;
+$border-white: 1px solid $white-accent;
+$border-radiius: 0.9375rem;
+
+
+body {
+  background-color: $background-color;
+  font-family: $main-font;
+}
