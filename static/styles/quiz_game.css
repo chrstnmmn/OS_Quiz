@@ -12,7 +12,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding-inline: 0.5rem;
+  padding-inline: 2rem;
   overflow-x: hidden;
 }
 
@@ -42,7 +42,7 @@ body {
   text-transform: uppercase;
 }
 .quiz-container .question-container {
-  max-width: 23rem;
+  max-width: 20.3rem;
 }
 .quiz-container .question-container .situation-text {
   color: #ffffff;
