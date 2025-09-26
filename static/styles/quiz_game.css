@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #161616;
+  font-family: "Inter", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding-inline: 0.5rem;
+  overflow-x: hidden;
+}
+
+.logo-container svg {
+  width: 100%;
+  max-width: 30rem;
+}
+
+.quiz-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.quiz-container .quiz-header {
+  width: 100%;
+}
+.quiz-container .quiz-header .question-header {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 2.25rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.quiz-container .question-container {
+  max-width: 23rem;
+}
+.quiz-container .question-container .situation-text {
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.quiz-container .question-container .question-text {
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-style: italic;
+  font-weight: 900;
+  line-height: normal;
+}
+.quiz-container .question-container .answer-header {
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+.quiz-container .question-container .optionsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.4rem;
+}
+.quiz-container .question-container .optionsContainer .option-button {
+  position: relative;
+  height: 3.7rem;
+  border-radius: 0.9375rem;
+  background: #ffffff;
+  border-style: none;
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ff05b0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.quiz-container .question-container .optionsContainer .option-button svg {
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.3rem;
+  height: 1.3rem;
+}
+.quiz-container .question-container .optionsContainer .option-button:active {
+  background-color: #ff05b0;
+  color: #ffffff;
+}
+.quiz-container .question-container .optionsContainer .option-button:active svg path {
+  fill: #ffffff;
+}
+.quiz-container .timer-section .timer-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.3rem;
+}
+.quiz-container .timer-section .timer-display .timer-label,
+.quiz-container .timer-section .timer-display .timer-value {
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+/*# sourceMappingURL=quiz_game.css.map */

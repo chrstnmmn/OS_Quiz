@@ -1,0 +1,114 @@
+@import "index.scss";
+
+.quiz-container {
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	.quiz-header {
+		width: 100%;
+		.question-header {
+			color: $white-accent;
+			text-align: center;
+			font-family: $main-font;
+			font-size: 2.25rem;
+			font-style: normal;
+			font-weight: 900;
+			line-height: normal;
+			text-transform: uppercase;
+		}
+	}
+
+	.question-container {
+		max-width: 23rem;
+		.situation-text {
+			color: $white-accent;
+			font-family: $main-font;
+			font-size: 1.125rem;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+		}
+
+		.question-text {
+			color: $white-accent;
+			font-family: $main-font;
+			font-size: 1.125rem;
+			font-style: italic;
+			font-weight: 900;
+			line-height: normal;
+		}
+
+		.answer-header {
+			color: $white-accent;
+			font-family: $main-font;
+			font-size: 1.125rem;
+			font-style: normal;
+			font-weight: 800;
+			line-height: normal;
+		}
+
+		.optionsContainer {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			row-gap: 0.4rem;
+
+			.option-button {
+				position: relative;
+				height: 3.7rem;
+				border-radius: $border-radius;
+				background: $white-accent;
+				border-style: none;
+				font-family: $main-font;
+				font-size: 1.25rem;
+				font-weight: 700;
+				color: $pink-accent;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				svg {
+					position: absolute;
+					left: 0.8rem;
+					top: 50%;
+					transform: translateY(-50%);
+					width: 1.3rem;
+					height: 1.3rem;
+				}
+
+				&:active {
+					background-color: $pink-accent;
+					color: $white-accent;
+
+					svg path {
+						fill: $white-accent;
+					}
+				}
+			}
+		}
+	}
+
+	.timer-section {
+		.timer-display {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			column-gap: 0.3rem;
+
+			.timer-label,
+			.timer-value {
+				color: $white-accent;
+				font-family: $main-font;
+				font-size: 1rem;
+				font-style: normal;
+				font-weight: 900;
+				line-height: normal;
+				text-transform: uppercase;
+			}
+		}
+	}
+}

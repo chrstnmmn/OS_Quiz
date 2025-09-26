@@ -10,6 +10,7 @@
 		/>
 		<link rel="stylesheet" href="/static/styles/index.css" />
 		<link rel="stylesheet" href="/static/styles/login_section.css" />
+		<link rel="stylesheet" href="/static/styles/quiz_game.css" />
 		<title>Kernel Quest</title>
 	</head>
 	<body>
@@ -227,7 +228,7 @@
 			</div>
 
 			<!-- Login Form -->
-			<div id="loginSection" class="form-container">
+			<div id="loginSection" class="form-container" style="display: block">
 				<form id="userForm" class="form">
 					<input
 						type="text"
@@ -329,24 +330,22 @@
 			<!-- Quiz Section (Hidden initially) -->
 			<div id="quizSection" class="quiz-container" style="display: none">
 				<div class="quiz-header">
-					<h2>Quiz Time!</h2>
-					<div class="score-display">
-						Score: <span id="score">0</span>/15
-					</div>
-					<div class="timer-display">
-						Time: <span id="timer">30</span>s
-					</div>
+					<h2 class="question-header">Question 1:</h2>
 				</div>
 
 				<div class="question-container">
-					<h3 id="question"></h3>
-					<div id="options" class="options-container"></div>
+					<p id="situationText" class="situation-text"></p>
+					<p id="questionText" class="question-text"></p>
+					<h3 class="answer-header">Select your answer:</h3>
+					<div class="optionsContainer"></div>
 				</div>
 
-				<div class="quiz-controls">
-					<button id="nextButton" class="quiz-button" disabled>
-						Next Question
-					</button>
+				<!-- Timer section -->
+				<div class="timer-section">
+					<div class="timer-display">
+						<h3 class="timer-label">Time Remaining:</h3>
+						<h3 id="timer" class="timer-value">45</h3>
+					</div>
 				</div>
 			</div>
 

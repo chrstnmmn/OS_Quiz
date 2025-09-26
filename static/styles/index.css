@@ -18,6 +18,7 @@ body {
 
 .logo-container svg {
   width: 100%;
+  max-width: 30rem;
 }
 
 /*# sourceMappingURL=index.css.map */

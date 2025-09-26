@@ -1,323 +1,494 @@
 class QuizGame {
-    constructor() {
-        this.currentQuestion = 0;
-        this.score = 0;
-        this.playerName = '';
-        this.timer = null;
-        this.timeLeft = 30;
-        this.questions = [
-            {
-                question: "A printer is currently being used by one process, and another process also requests the printer. Since the printer cannot be shared, the second process must wait. What deadlock condition does this scenario represent?",
-                options: ["Hold and Wait", "Circular Wait", "Mutual Exclusion", "No Preemption"],
-                answer: 2
-            },
-            {
-                question: "A process is holding a memory block while simultaneously requesting access to a CPU cycle. Another process is holding the CPU cycle and waiting for the memory block. Which deadlock condition is demonstrated?",
-                options: ["Hold and Wait", "Circular Wait", "No Preemption", "Resource Allocation Denial"],
-                answer: 0
-            },
-            {
-                question: "A process is holding a disk resource. The operating system tries to reassign the disk to another process, but it cannot because resources cannot be forcibly taken. What condition prevents the OS from reallocating the disk?",
-                options: ["Hold and Wait", "Circular Wait", "No Preemption", "Deadlock Avoidance"],
-                answer: 2
-            },
-            {
-                question: "Process A is holding a printer and waiting for a scanner. Process B is holding the scanner and waiting for a keyboard. Process C is holding the keyboard and waiting for the printer. What type of situation is this?",
-                options: ["Deadlock Avoidance", "Circular Wait", "Indirect Prevention", "Resource Allocation Denial"],
-                answer: 1
-            },
-            {
-                question: "The system requires all processes to request their resources at the beginning of execution. If resources aren’t available, the process must wait until all requested resources can be allocated simultaneously. What condition is being prevented here?",
-                options: ["Hold and Wait", "Cirular Wait", "No Preemption", "Deadlock Detection"],
-                answer: 0
-            },
-            {
-                question: "A banking system checks every resource request with the Banker’s Algorithm. It only grants the request if the system will remain in a safe state. Which strategy is being used?",
-                options: ["Deadlock Prevention", "Deadlock Detection", "Deadlock Avoidance", "Circular Wait"],
-                answer: 2
-            },
-            {
-                question: "A system identifies that five processes are deadlocked. The operating system aborts all five processes and restarts them from the beginning. What recovery method is used here?",
-                options: ["Rollback to checkpoint", "Abort all deadlocked process", "Preempt resources", "Abort Process one by one"],
-                answer: 1
-            },
-            {
-                question: "The OS checks a resource request against the Banker’s Algorithm and denies it if granting it would lead to an unsafe state. Which strategy is used?",
-                options: ["Deadlock Prevention", "Deadlock Avoidance", "Deadlock Detection", "Circular Wait"],
-                answer: 1
-            },
-            {
-                question: "A new process requests more resources than what is available. The system refuses to start it. What avoidance method is applied?",
-                options: ["Resource Allocation Denial", "Deadlock Detection", "Process Initiation Denial", "Circular Wait"],
-                answer: 2
-            },
-            {
-                question: "A process holding a scanner requests a printer. The OS denies the request because granting it might lead to deadlock. Which method is used?",
-                options: ["Process Initiation Denial", "Resource Allocation Denial", "Deadlock Detection", "Circular Wait"],
-                answer: 1
-            },
-            {
-                question: "The OS detects a deadlock among 3 processes and terminates all of them immediately. Which recovery method is applied?",
-                options: ["Abort all process", "Abort process at a time", "Resource Preemption", "Rollback"],
-                answer: 0
-            },
-            {
-                question: "The system detects deadlock and kills one process at a time until no cycle exists. Which recovery method is this?",
-                options: ["Abort all process", "Resource Preemption", "Abort processes one by one", "Process Initiation Denial"],
-                answer: 2
-            },
-            {
-                question: "The OS rolls back a process to its last safe checkpoint and restarts it to resolve deadlock. Which recovery method is applied?",
-                options: ["Resource Preemption", "Abort all processes", "Rollback", "Circular Wait Prevention"],
-                answer: 2
-            },
-            {
-                question: "A system detects a deadlock and temporarily takes memory away from one process to give it to another. Which recovery method is this?",
-                options: ["Rollback", "Resource Preemption", "Abort processes one by one", "Deadlock Avoidance"],
-                answer: 1
-            },
-            {
-                question: "The OS must terminate one of the deadlocked processes. It chooses the process with the lowest priority to kill. Which Criterion is being used?",
-                options: ["Least resources allocated", "Most remaining time", "lowest priority", "Least CPU time consumed"],
-                answer: 2
-            }
-        ];
-        
-        this.initializeEventListeners();
-    }
+	constructor() {
+		this.currentQuestion = 0;
+		this.score = 0;
+		this.playerName = "";
+		this.timer = null;
+		this.timeLeft = 45;
+		this.questions = [
+			{
+				situation:
+					"A printer is currently being used by one process, and another process also requests the printer. Since the printer cannot be shared, the second process must wait.",
+				question:
+					"What deadlock condition does this scenario represent?",
+				options: [
+					"Hold and Wait",
+					"Circular Wait",
+					"Mutual Exclusion",
+					"No Preemption",
+				],
+				answer: 2,
+			},
+			{
+				situation:
+					"A process is holding a memory block while simultaneously requesting access to a CPU cycle. Another process is holding the CPU cycle and waiting for the memory block.",
+				question: "Which deadlock condition is demonstrated?",
+				options: [
+					"Hold and Wait",
+					"Circular Wait",
+					"No Preemption",
+					"Resource Allocation Denial",
+				],
+				answer: 0,
+			},
+			{
+				situation:
+					"A process is holding a disk resource. The operating system tries to reassign the disk to another process, but it cannot because resources cannot be forcibly taken.",
+				question:
+					"What condition prevents the OS from reallocating the disk?",
+				options: [
+					"Hold and Wait",
+					"Circular Wait",
+					"No Preemption",
+					"Deadlock Avoidance",
+				],
+				answer: 2,
+			},
+			{
+				situation:
+					"Process A is holding a printer and waiting for a scanner. Process B is holding the scanner and waiting for a keyboard. Process C is holding the keyboard and waiting for the printer.",
+				question: "What type of situation is this?",
+				options: [
+					"Deadlock Avoidance",
+					"Circular Wait",
+					"Indirect Prevention",
+					"Resource Allocation Denial",
+				],
+				answer: 1,
+			},
+			{
+				situation:
+					"The system requires all processes to request their resources at the beginning of execution. If resources aren't available, the process must wait until all requested resources can be allocated simultaneously.",
+				question: "What condition is being prevented here?",
+				options: [
+					"Hold and Wait",
+					"Circular Wait",
+					"No Preemption",
+					"Deadlock Detection",
+				],
+				answer: 0,
+			},
+			{
+				situation:
+					"A banking system checks every resource request with the Banker's Algorithm. It only grants the request if the system will remain in a safe state.",
+				question: "Which strategy is being used?",
+				options: [
+					"Deadlock Prevention",
+					"Deadlock Detection",
+					"Deadlock Avoidance",
+					"Circular Wait",
+				],
+				answer: 2,
+			},
+			{
+				situation:
+					"A system identifies that five processes are deadlocked. The operating system aborts all five processes and restarts them from the beginning.",
+				question: "What recovery method is used here?",
+				options: [
+					"Rollback to checkpoint",
+					"Abort all deadlocked process",
+					"Preempt resources",
+					"Abort Process one by one",
+				],
+				answer: 1,
+			},
+			{
+				situation:
+					"The OS checks a resource request against the Banker's Algorithm and denies it if granting it would lead to an unsafe state.",
+				question: "Which strategy is used?",
+				options: [
+					"Deadlock Prevention",
+					"Deadlock Avoidance",
+					"Deadlock Detection",
+					"Circular Wait",
+				],
+				answer: 1,
+			},
+			{
+				situation:
+					"A new process requests more resources than what is available. The system refuses to start it.",
+				question: "What avoidance method is applied?",
+				options: [
+					"Resource Allocation Denial",
+					"Deadlock Detection",
+					"Process Initiation Denial",
+					"Circular Wait",
+				],
+				answer: 2,
+			},
+			{
+				situation:
+					"A process holding a scanner requests a printer. The OS denies the request because granting it might lead to deadlock.",
+				question: "Which method is used?",
+				options: [
+					"Process Initiation Denial",
+					"Resource Allocation Denial",
+					"Deadlock Detection",
+					"Circular Wait",
+				],
+				answer: 1,
+			},
+			{
+				situation:
+					"The OS detects a deadlock among 3 processes and terminates all of them immediately.",
+				question: "Which recovery method is applied?",
+				options: [
+					"Abort all process",
+					"Abort process at a time",
+					"Resource Preemption",
+					"Rollback",
+				],
+				answer: 0,
+			},
+			{
+				situation:
+					"The system detects deadlock and kills one process at a time until no cycle exists.",
+				question: "Which recovery method is this?",
+				options: [
+					"Abort all process",
+					"Resource Preemption",
+					"Abort processes one by one",
+					"Process Initiation Denial",
+				],
+				answer: 2,
+			},
+			{
+				situation:
+					"The OS rolls back a process to its last safe checkpoint and restarts it to resolve deadlock.",
+				question: "Which recovery method is applied?",
+				options: [
+					"Resource Preemption",
+					"Abort all processes",
+					"Rollback",
+					"Circular Wait Prevention",
+				],
+				answer: 2,
+			},
+			{
+				situation:
+					"A system detects a deadlock and temporarily takes memory away from one process to give it to another.",
+				question: "Which recovery method is this?",
+				options: [
+					"Rollback",
+					"Resource Preemption",
+					"Abort processes one by one",
+					"Deadlock Avoidance",
+				],
+				answer: 1,
+			},
+			{
+				situation:
+					"The OS must terminate one of the deadlocked processes. It chooses the process with the lowest priority to kill.",
+				question: "Which Criterion is being used?",
+				options: [
+					"Least resources allocated",
+					"Most remaining time",
+					"lowest priority",
+					"Least CPU time consumed",
+				],
+				answer: 2,
+			},
+		];
 
-    initializeEventListeners() {
-        document.getElementById('userForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.startGame();
-        });
+		this.initializeEventListeners();
+	}
 
-        document.getElementById('nextButton').addEventListener('click', () => {
-            this.nextQuestion();
-        });
-    }
+	initializeEventListeners() {
+		document.getElementById("userForm").addEventListener("submit", (e) => {
+			e.preventDefault();
+			this.startGame();
+		});
+	}
 
-    async startGame() {
-        const firstName = document.getElementById('firstName').value.trim();
-        const lastName = document.getElementById('lastName').value.trim();
-        
-        if (!firstName || !lastName) {
-            alert('Please enter both first and last name');
-            return;
-        }
-        
-        this.playerName = `${firstName} ${lastName}`;
-        
-        // Test backend connection first
-        try {
-            const response = await fetch('/health');
-            if (!response.ok) {
-                throw new Error('Backend not responding');
-            }
-            const health = await response.json();
-            console.log('Server health:', health);
-        } catch (error) {
-            alert('Server connection failed. Please make sure the backend is running.');
-            console.error('Server connection error:', error);
-            return;
-        }
-        
-        // Hide login, show quiz
-        document.getElementById('loginSection').style.display = 'none';
-        document.getElementById('quizSection').style.display = 'block';
-        
-        this.displayQuestion();
-        this.startTimer();
-    }
+	async startGame() {
+		const firstName = document.getElementById("firstName").value.trim();
+		const lastName = document.getElementById("lastName").value.trim();
 
-    displayQuestion() {
-        if (this.currentQuestion >= this.questions.length) {
-            this.endGame();
-            return;
-        }
+		if (!firstName || !lastName) {
+			alert("Please enter both first and last name");
+			return;
+		}
 
-        const question = this.questions[this.currentQuestion];
-        document.getElementById('question').textContent = `Question ${this.currentQuestion + 1}/15: ${question.question}`;
-        
-        const optionsContainer = document.getElementById('options');
-        optionsContainer.innerHTML = '';
-        
-        question.options.forEach((option, index) => {
-            const button = document.createElement('button');
-            button.textContent = option;
-            button.className = 'option-button';
-            button.onclick = () => this.selectOption(index);
-            optionsContainer.appendChild(button);
-        });
-        
-        document.getElementById('score').textContent = this.score;
-        document.getElementById('nextButton').disabled = true;
-        
-        // Reset timer
-        this.timeLeft = 30;
-        document.getElementById('timer').textContent = this.timeLeft;
-    }
+		this.playerName = `${firstName} ${lastName}`;
 
-    startTimer() {
-        if (this.timer) {
-            clearInterval(this.timer);
-        }
-        
-        this.timer = setInterval(() => {
-            this.timeLeft--;
-            document.getElementById('timer').textContent = this.timeLeft;
-            
-            if (this.timeLeft <= 0) {
-                clearInterval(this.timer);
-                this.autoNextQuestion();
-            }
-        }, 1000);
-    }
+		// Test backend connection first
+		try {
+			const response = await fetch("/health");
+			if (!response.ok) {
+				throw new Error("Backend not responding");
+			}
+			const health = await response.json();
+			console.log("Server health:", health);
+		} catch (error) {
+			alert(
+				"Server connection failed. Please make sure the backend is running."
+			);
+			console.error("Server connection error:", error);
+			return;
+		}
 
-    autoNextQuestion() {
-        // Highlight correct answer if time runs out
-        const correctIndex = this.questions[this.currentQuestion].answer;
-        const options = document.querySelectorAll('.option-button');
-        
-        options.forEach((button, index) => {
-            if (index === correctIndex) {
-                button.classList.add('correct');
-            }
-            button.disabled = true;
-        });
-        
-        document.getElementById('nextButton').disabled = false;
-    }
+		// Hide login, show quiz
+		document.getElementById("loginSection").style.display = "none";
+		document.getElementById("quizSection").style.display = "block";
 
-    selectOption(selectedIndex) {
-        // Stop the timer
-        clearInterval(this.timer);
-        
-        const correctIndex = this.questions[this.currentQuestion].answer;
-        const options = document.querySelectorAll('.option-button');
-        
-        options.forEach((button, index) => {
-            if (index === correctIndex) {
-                button.classList.add('correct');
-            }
-            if (index === selectedIndex && index !== correctIndex) {
-                button.classList.add('incorrect');
-            }
-            button.disabled = true;
-        });
-        
-        if (selectedIndex === correctIndex) {
-            this.score++;
-            document.getElementById('score').textContent = this.score;
-        }
-        
-        document.getElementById('nextButton').disabled = false;
-    }
+		this.displayQuestion();
+		this.startTimer();
+	}
 
-    nextQuestion() {
-        this.currentQuestion++;
-        this.displayQuestion();
-        this.startTimer();
-    }
+	displayQuestion() {
+		if (this.currentQuestion >= this.questions.length) {
+			this.endGame();
+			return;
+		}
 
-    async endGame() {
-        // Clear any remaining timer
-        clearInterval(this.timer);
-        
-        // Send score to backend
-        try {
-            const firstName = document.getElementById('firstName').value.trim();
-            const lastName = document.getElementById('lastName').value.trim();
-            
-            const response = await fetch('/submit_score', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    firstName: firstName,
-                    lastName: lastName,
-                    score: this.score
-                })
-            });
-            
-            const result = await response.json();
-            
-            if (response.ok) {
-                console.log('Score submitted successfully:', result);
-                this.showResults();
-            } else {
-                console.error('Failed to submit score:', result);
-                alert('Failed to submit score. Please try again.');
-                this.showResults(); // Still show results
-            }
-        } catch (error) {
-            console.error('Error submitting score:', error);
-            alert('Network error. Your score may not have been saved.');
-            this.showResults(); // Still show results
-        }
-    }
+		const question = this.questions[this.currentQuestion];
 
-    async showResults() {
-        // Hide quiz, show results
-        document.getElementById('quizSection').style.display = 'none';
-        document.getElementById('resultsSection').style.display = 'block';
-        
-        // Display final score
-        document.getElementById('finalScore').textContent = this.score;
-        
-        // Get and display leaderboard
-        await this.updateLeaderboard();
-        
-        // Set up real-time leaderboard updates
-        setInterval(() => {
-            this.updateLeaderboard();
-        }, 5000); // Update every 5 seconds
-    }
+		// Update question header with numbering
+		document.querySelector(".question-header").textContent = `Question ${
+			this.currentQuestion + 1
+		}:`;
 
-    async updateLeaderboard() {
-        try {
-            const response = await fetch('/get_leaderboard');
-            if (!response.ok) {
-                throw new Error('Failed to fetch leaderboard');
-            }
-            
-            const leaderboardData = await response.json();
-            
-            const leaderboard = document.getElementById('leaderboard');
-            leaderboard.innerHTML = '';
-            
-            if (leaderboardData.length === 0) {
-                leaderboard.innerHTML = '<div class="no-scores">No scores yet. Be the first!</div>';
-                return;
-            }
-            
-            leaderboardData.forEach((player, index) => {
-                const ranks = ['1st', '2nd', '3rd'];
-                const item = document.createElement('div');
-                item.className = 'leaderboard-item';
-                
-                // Highlight current player
-                if (player.name === this.playerName) {
-                    item.classList.add('current-player');
-                }
-                
-                item.innerHTML = `
+		// Update situation text
+		document.getElementById("situationText").textContent =
+			question.situation;
+
+		// Update question text
+		document.getElementById("questionText").textContent = question.question;
+
+		// Update options - create fresh buttons with proper structure
+		const optionsContainer = document.querySelector(".optionsContainer");
+		optionsContainer.innerHTML = "";
+
+		question.options.forEach((option, index) => {
+			const button = document.createElement("button");
+			button.className = "option-button";
+			button.setAttribute("value", index + 1);
+
+			// Create SVG container (initially hidden)
+			const svgContainer = document.createElement("span");
+			svgContainer.className = "option-svg";
+			svgContainer.style.display = "none";
+
+			// Add option text
+			const optionText = document.createElement("span");
+			optionText.className = "option-text";
+			optionText.textContent = option;
+
+			button.appendChild(svgContainer);
+			button.appendChild(optionText);
+			button.onclick = () => this.selectOption(index, button);
+
+			optionsContainer.appendChild(button);
+		});
+
+		// REMOVE: createNextButton() logic is removed as navigation is now automatic
+
+		// Reset timer
+		this.timeLeft = 45;
+		document.getElementById("timer").textContent = this.timeLeft;
+	}
+
+	startTimer() {
+		if (this.timer) {
+			clearInterval(this.timer);
+		}
+
+		this.timer = setInterval(() => {
+			this.timeLeft--;
+			document.getElementById("timer").textContent = this.timeLeft;
+
+			if (this.timeLeft <= 0) {
+				clearInterval(this.timer);
+				this.autoNextQuestion();
+			}
+		}, 1000);
+	}
+
+	autoNextQuestion() {
+		// Automatically select an invalid option (-1) to trigger feedback but no score change
+		this.selectOption(-1);
+	}
+
+	selectOption(selectedIndex, selectedButton = null) {
+		// Prevent re-selection
+		if (selectedButton && selectedButton.disabled) return;
+
+		// Stop the timer
+		clearInterval(this.timer);
+
+		const currentQuestionData = this.questions[this.currentQuestion];
+		const correctIndex = currentQuestionData.answer;
+		const options = document.querySelectorAll(".option-button");
+
+		const isCorrect = selectedIndex === correctIndex;
+
+		// Disable all options
+		options.forEach((button) => {
+			button.disabled = true;
+		});
+
+		if (isCorrect) {
+			this.score++;
+		}
+
+		// Process all options to display feedback
+		options.forEach((button, index) => {
+			const svgContainer = button.querySelector(".option-svg");
+			svgContainer.style.display = "inline-block";
+
+			if (index === correctIndex) {
+				// Correct Answer Styling
+				this.createCheckMark(svgContainer, true); // True for white fill on pink background
+				button.style.backgroundColor = "#ff05b0";
+				button.style.color = "#ffffff";
+			} else if (index === selectedIndex && selectedIndex !== -1) {
+				// Incorrect Selected Answer Styling
+				this.createXMark(svgContainer, true); // True for white fill on pink background
+				button.style.backgroundColor = "rgba(255, 5, 176, 0.50)";
+				button.style.color = "#ffffff";
+			} else {
+				// Default styling for other unselected, incorrect options
+				button.style.backgroundColor = "";
+				button.style.color = "";
+				svgContainer.style.display = "none"; // Keep other marks hidden
+			}
+		});
+
+		// Automatic transition to the next question after a brief delay
+		setTimeout(() => {
+			this.currentQuestion++;
+			this.displayQuestion();
+			this.startTimer();
+		}, 1500); // Wait 1.5 seconds before moving on
+	}
+
+	createCheckMark(svgContainer, isSolidColor = false) {
+		// Fill color for checkmark is now white if isSolidColor is true (meaning a colored background)
+		const fill = isSolidColor ? "#ffffff" : "#000000";
+
+		svgContainer.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                <path d="M10.6851 0.286987C5.30896 0.286987 0.935059 4.66089 0.935059 10.037C0.935059 15.4131 5.30896 19.787 10.6851 19.787C16.0612 19.787 20.4351 15.4131 20.4351 10.037C20.4351 4.66089 16.0612 0.286987 10.6851 0.286987ZM15.7593 6.76933L9.45928 14.2693C9.39017 14.3516 9.30418 14.4181 9.20713 14.4643C9.11008 14.5105 9.00424 14.5353 8.89678 14.537H8.88412C8.779 14.5369 8.67506 14.5148 8.57904 14.472C8.48303 14.4292 8.39708 14.3667 8.32678 14.2886L5.62678 11.2886C5.55821 11.2158 5.50487 11.1301 5.46989 11.0365C5.43491 10.9428 5.41901 10.8432 5.42311 10.7433C5.42721 10.6434 5.45123 10.5454 5.49376 10.4549C5.53629 10.3645 5.59648 10.2834 5.67078 10.2166C5.74508 10.1497 5.832 10.0984 5.92642 10.0656C6.02084 10.0328 6.12087 10.0192 6.22062 10.0256C6.32037 10.032 6.41783 10.0583 6.50728 10.1029C6.59672 10.1475 6.67634 10.2096 6.74146 10.2854L8.86443 12.6442L14.6108 5.80464C14.7397 5.65562 14.9221 5.5633 15.1185 5.54765C15.3149 5.532 15.5096 5.59427 15.6605 5.721C15.8114 5.84773 15.9063 6.02875 15.9248 6.22492C15.9433 6.42108 15.8838 6.61664 15.7593 6.76933Z" fill="${fill}"/>
+            </svg>
+        `;
+	}
+
+	createXMark(svgContainer, isSolidColor = false) {
+		// Fill color for X mark is now white if isSolidColor is true (meaning a colored background)
+		const fill = isSolidColor ? "#ffffff" : "#FF05B0"; // Original was #FF05B0
+		svgContainer.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                <path d="M10.6851 0.741699C5.30896 0.741699 0.935059 5.11561 0.935059 10.4917C0.935059 15.8678 5.30896 20.2417 10.6851 20.2417C16.0612 20.2417 20.4351 15.8678 20.4351 10.4917C20.4351 5.11561 16.0612 0.741699 10.6851 0.741699ZM14.2152 12.9615C14.2878 13.0305 14.3458 13.1133 14.3859 13.205C14.426 13.2967 14.4473 13.3956 14.4486 13.4957C14.4499 13.5958 14.4311 13.6951 14.3934 13.7878C14.3557 13.8806 14.2998 13.9648 14.229 14.0356C14.1582 14.1064 14.0739 14.1623 13.9812 14.2C13.8885 14.2377 13.7891 14.2565 13.689 14.2552C13.5889 14.2539 13.4901 14.2326 13.3984 14.1925C13.3066 14.1525 13.2239 14.0944 13.1549 14.0219L10.6851 11.5525L8.21521 14.0219C8.07342 14.1566 7.88461 14.2306 7.68903 14.2281C7.49346 14.2256 7.30661 14.1468 7.16831 14.0085C7.03001 13.8702 6.9512 13.6833 6.9487 13.4877C6.94619 13.2922 7.02019 13.1033 7.1549 12.9615L9.62428 10.4917L7.1549 8.02186C7.02019 7.88006 6.94619 7.69125 6.9487 7.49568C6.9512 7.3001 7.03001 7.11325 7.16831 6.97495C7.30661 6.83665 7.49346 6.75784 7.68903 6.75534C7.88461 6.75283 8.07342 6.82683 8.21521 6.96154L10.6851 9.43092L13.1549 6.96154C13.2967 6.82683 13.4855 6.75283 13.6811 6.75534C13.8767 6.75784 14.0635 6.83665 14.2018 6.97495C14.3401 7.11325 14.4189 7.3001 14.4214 7.49568C14.4239 7.69125 14.3499 7.88006 14.2152 8.02186L11.7458 10.4917L14.2152 12.9615Z" fill="${fill}"/>
+            </svg>
+        `;
+	}
+
+	// nextQuestion() and createNextButton() are removed
+	// ... (endGame, showResults, updateLeaderboard methods remain the same)
+
+	// The rest of the methods (endGame, showResults, updateLeaderboard) are the same
+	// and are omitted here for brevity, but would be included in the final code.
+
+	async endGame() {
+		// Clear any remaining timer
+		clearInterval(this.timer);
+
+		// Send score to backend
+		try {
+			const firstName = document.getElementById("firstName").value.trim();
+			const lastName = document.getElementById("lastName").value.trim();
+
+			const response = await fetch("/submit_score", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					firstName: firstName,
+					lastName: lastName,
+					score: this.score,
+				}),
+			});
+
+			const result = await response.json();
+
+			if (response.ok) {
+				console.log("Score submitted successfully:", result);
+				this.showResults();
+			} else {
+				console.error("Failed to submit score:", result);
+				alert("Failed to submit score. Please try again.");
+				this.showResults(); // Still show results
+			}
+		} catch (error) {
+			console.error("Error submitting score:", error);
+			alert("Network error. Your score may not have been saved.");
+			this.showResults(); // Still show results
+		}
+	}
+
+	async showResults() {
+		// Hide quiz, show results
+		document.getElementById("quizSection").style.display = "none";
+		document.getElementById("resultsSection").style.display = "block";
+
+		// Display final score
+		document.getElementById("finalScore").textContent = this.score;
+
+		// Get and display leaderboard
+		await this.updateLeaderboard();
+
+		// Set up real-time leaderboard updates
+		setInterval(() => {
+			this.updateLeaderboard();
+		}, 5000); // Update every 5 seconds
+	}
+
+	async updateLeaderboard() {
+		try {
+			const response = await fetch("/get_leaderboard");
+			if (!response.ok) {
+				throw new Error("Failed to fetch leaderboard");
+			}
+
+			const leaderboardData = await response.json();
+
+			const leaderboard = document.getElementById("leaderboard");
+			leaderboard.innerHTML = "";
+
+			if (leaderboardData.length === 0) {
+				leaderboard.innerHTML =
+					'<div class="no-scores">No scores yet. Be the first!</div>';
+				return;
+			}
+
+			leaderboardData.forEach((player, index) => {
+				const ranks = ["1st", "2nd", "3rd"];
+				const item = document.createElement("div");
+				item.className = "leaderboard-item";
+
+				// Highlight current player
+				if (player.name === this.playerName) {
+					item.classList.add("current-player");
+				}
+
+				item.innerHTML = `
                     <span class="rank">${ranks[index]}</span>
                     <span class="name">${player.name}</span>
                     <span class="score">${player.score}/15</span>
                 `;
-                leaderboard.appendChild(item);
-            });
-        } catch (error) {
-            console.error('Error fetching leaderboard:', error);
-            const leaderboard = document.getElementById('leaderboard');
-            leaderboard.innerHTML = '<div class="error">Error loading leaderboard</div>';
-        }
-    }
+				leaderboard.appendChild(item);
+			});
+		} catch (error) {
+			console.error("Error fetching leaderboard:", error);
+			const leaderboard = document.getElementById("leaderboard");
+			leaderboard.innerHTML =
+				'<div class="error">Error loading leaderboard</div>';
+		}
+	}
 }
 
 // Initialize the game when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    new QuizGame();
+document.addEventListener("DOMContentLoaded", () => {
+	new QuizGame();
 });
