@@ -455,19 +455,55 @@ class QuizGame {
 		document.getElementById("quizSection").style.display = "none";
 		document.getElementById("resultsSection").style.display = "block";
 
-		// Display final score
-		document.getElementById("finalScore").textContent = this.score;
+		// 1. Update ONLY the <h1 class="main-score"> element with the player's score
+		document.querySelector(".main-score").textContent = this.score;
 
-		// Get and display leaderboard
+		// 2. Add Leaderboard button click functionality
+		const leaderboardButton = document.querySelector(".leaderboard-button");
+		// Ensure the results section has an element with ID "leaderboard" for the list to render into
+		const leaderboardList = document.getElementById("leaderboard-list");
+
+		// Initial state: Leaderboard list is hidden, button shows "Leaderboard"
+		if (leaderboardList) {
+			leaderboardList.style.display = "none";
+		}
+
+		leaderboardButton.onclick = () => {
+			// In a real application, this would toggle the visibility of the leaderboard
+			// For simplicity, we'll just force the list to appear on click
+			if (leaderboardList) {
+				leaderboardList.style.display =
+					leaderboardList.style.display === "none" ? "block" : "none";
+			}
+			this.updateLeaderboard(true);
+		};
+
+		// Initial fetch and display of leaderboard (will populate the hidden list)
 		await this.updateLeaderboard();
 
 		// Set up real-time leaderboard updates
 		setInterval(() => {
-			this.updateLeaderboard();
+			if (
+				document.getElementById("resultsSection").style.display ===
+				"block"
+			) {
+				this.updateLeaderboard();
+			}
 		}, 5000); // Update every 5 seconds
 	}
 
-	async updateLeaderboard() {
+	async updateLeaderboard(forceUpdate = false) {
+		// Assuming there is a container element with ID 'leaderboard-list' for the actual list items
+		const leaderboard = document.getElementById("leaderboard-list");
+		if (!leaderboard) {
+			console.error(
+				"Leaderboard container element with ID 'leaderboard-list' not found."
+			);
+			// Fallback: Check for the old ID if the new one isn't present
+			const oldLeaderboard = document.getElementById("leaderboard");
+			if (!oldLeaderboard) return;
+		}
+
 		try {
 			const response = await fetch("/get_leaderboard");
 			if (!response.ok) {
@@ -476,7 +512,7 @@ class QuizGame {
 
 			const leaderboardData = await response.json();
 
-			const leaderboard = document.getElementById("leaderboard");
+			// Clear existing content
 			leaderboard.innerHTML = "";
 
 			if (leaderboardData.length === 0) {
@@ -496,7 +532,9 @@ class QuizGame {
 				}
 
 				item.innerHTML = `
-                    <span class="rank">${ranks[index]}</span>
+                    <span class="rank">${
+						ranks[index] || index + 1 + "th"
+					}</span>
                     <span class="name">${player.name}</span>
                     <span class="score">${player.score}/15</span>
                 `;
@@ -504,7 +542,6 @@ class QuizGame {
 			});
 		} catch (error) {
 			console.error("Error fetching leaderboard:", error);
-			const leaderboard = document.getElementById("leaderboard");
 			leaderboard.innerHTML =
 				'<div class="error">Error loading leaderboard</div>';
 		}

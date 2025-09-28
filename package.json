@@ -6,7 +6,7 @@
 		"sass": "sass static/scss:static/styles",
 		"sass:watch": "sass --watch static/scss:static/styles",
 		"start": "python app.py",
-		"dev": "set FLASK_APP=app.py && set FLASK_ENV=development && flask run",
+		"dev": "set FLASK_APP=app.py && set FLASK_ENV=development && flask run --host=0.0.0.0 --port=5000",
 		"export": "python -c \"from app import export_to_csv; export_to_csv()\""
 	},
 	"devDependencies": {

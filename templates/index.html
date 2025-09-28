@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="/static/styles/index.css" />
 		<link rel="stylesheet" href="/static/styles/login_section.css" />
 		<link rel="stylesheet" href="/static/styles/quiz_game.css" />
+		<link rel="stylesheet" href="/static/styles/result.css" />
 		<title>Kernel Quest</title>
 	</head>
 	<body>
@@ -228,7 +229,7 @@
 			</div>
 
 			<!-- Login Form -->
-			<div id="loginSection" class="form-container" style="display: block">
+			<div id="loginSection" class="form-container" style="display: none">
 				<form id="userForm" class="form">
 					<input
 						type="text"
@@ -350,39 +351,69 @@
 			</div>
 
 			<!-- Results Section (Hidden initially) -->
-			<div
-				id="resultsSection"
-				class="results-container"
-				style="display: none"
-			>
-				<h2>Your Results</h2>
-				<div class="final-score">
-					<h3>Your Score: <span id="finalScore">0</span>/15</h3>
-				</div>
-
-				<div class="leaderboard-section">
-					<h3>Top Players</h3>
-					<div id="leaderboard" class="leaderboard">
-						<div class="leaderboard-item">
-							<span class="rank">1st</span>
-							<span class="name">-</span>
-							<span class="score">-</span>
-						</div>
-						<div class="leaderboard-item">
-							<span class="rank">2nd</span>
-							<span class="name">-</span>
-							<span class="score">-</span>
-						</div>
-						<div class="leaderboard-item">
-							<span class="rank">3rd</span>
-							<span class="name">-</span>
-							<span class="score">-</span>
-						</div>
+			<div id="resultsSection" style="display: block">
+				<div class="results-container">
+					<div class="title-header">
+						<h3 class="sub-title-score">You got</h3>
+						<h2 class="title-score">A score of</h2>
 					</div>
-				</div>
 
-				<div class="thank-you">
-					<p>Thank you for playing!</p>
+					<div class="final-score">
+						<h1 class="main-score">14</h1>
+						<h2 class="over-total-score">Out of 15</h2>
+					</div>
+
+					<button class="leaderboard-button">
+						<h1 class="button-label">Leaderboard</h1>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="26"
+							height="18"
+							viewBox="0 0 26 18"
+							fill="none"
+						>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M0.29126 2.45849C0.29126 1.58233 1.00152 0.87207 1.87768 0.87207H24.0875C24.9637 0.87207 25.674 1.58233 25.674 2.45849C25.674 3.33464 24.9637 4.04491 24.0875 4.04491H1.87768C1.00152 4.04491 0.29126 3.33464 0.29126 2.45849Z"
+								fill="white"
+							/>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M0.29126 9.33288C0.29126 8.45672 1.00152 7.74646 1.87768 7.74646H24.0875C24.9637 7.74646 25.674 8.45672 25.674 9.33288C25.674 10.209 24.9637 10.9193 24.0875 10.9193H1.87768C1.00152 10.9193 0.29126 10.209 0.29126 9.33288Z"
+								fill="white"
+							/>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M0.29126 16.2074C0.29126 15.3312 1.00152 14.621 1.87768 14.621H24.0875C24.9637 14.621 25.674 15.3312 25.674 16.2074C25.674 17.0835 24.9637 17.7938 24.0875 17.7938H1.87768C1.00152 17.7938 0.29126 17.0835 0.29126 16.2074Z"
+								fill="white"
+							/>
+						</svg>
+					</button>
+				</div>
+			</div>
+
+			<!-- Leaderboard Section (Hidden initially) -->
+			<div class="leaderboard-section" style="display: none">
+				<h3>Top Players</h3>
+				<div id="leaderboard" class="leaderboard">
+					<div class="leaderboard-item">
+						<span class="rank">1st</span>
+						<span class="name">-</span>
+						<span class="score">-</span>
+					</div>
+					<div class="leaderboard-item">
+						<span class="rank">2nd</span>
+						<span class="name">-</span>
+						<span class="score">-</span>
+					</div>
+					<div class="leaderboard-item">
+						<span class="rank">3rd</span>
+						<span class="name">-</span>
+						<span class="score">-</span>
+					</div>
 				</div>
 			</div>
 		</div>
