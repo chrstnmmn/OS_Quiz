@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="/static/styles/login_section.css" />
 		<link rel="stylesheet" href="/static/styles/quiz_game.css" />
 		<link rel="stylesheet" href="/static/styles/result.css" />
+		<link rel="stylesheet" href="/static/styles/leaderboard.css" />
 		<title>Kernel Quest</title>
 	</head>
 	<body>
@@ -229,7 +230,7 @@
 			</div>
 
 			<!-- Login Form -->
-			<div id="loginSection" class="form-container" style="display: none">
+			<div id="loginSection" class="form-container" style="display: block">
 				<form id="userForm" class="form">
 					<input
 						type="text"
@@ -351,7 +352,7 @@
 			</div>
 
 			<!-- Results Section (Hidden initially) -->
-			<div id="resultsSection" style="display: block">
+			<div id="resultsSection" style="display: none">
 				<div class="results-container">
 					<div class="title-header">
 						<h3 class="sub-title-score">You got</h3>
@@ -396,24 +397,12 @@
 			</div>
 
 			<!-- Leaderboard Section (Hidden initially) -->
-			<div class="leaderboard-section" style="display: none">
-				<h3>Top Players</h3>
-				<div id="leaderboard" class="leaderboard">
-					<div class="leaderboard-item">
-						<span class="rank">1st</span>
-						<span class="name">-</span>
-						<span class="score">-</span>
-					</div>
-					<div class="leaderboard-item">
-						<span class="rank">2nd</span>
-						<span class="name">-</span>
-						<span class="score">-</span>
-					</div>
-					<div class="leaderboard-item">
-						<span class="rank">3rd</span>
-						<span class="name">-</span>
-						<span class="score">-</span>
-					</div>
+			<div class="leaderboard-section" style="display: none;">
+				<div class="leaderboard-container">
+					<h1 class="leaderboard-title">Leaderboard</h1>
+					<h3 class="top-players-title">Top Players:</h3>
+
+					<div id="leaderboard" class="leaderboard"></div>
 				</div>
 			</div>
 		</div>

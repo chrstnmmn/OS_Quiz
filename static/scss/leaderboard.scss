@@ -1,0 +1,74 @@
+@import "index.scss";
+
+@mixin truncate-text {
+	// 1. Force the text onto a single line
+	white-space: nowrap;
+
+	// 2. Hide any content that overflows the element's width
+	overflow: hidden;
+
+	// 3. Replace the hidden overflowed content with an ellipsis (...)
+	text-overflow: ellipsis;
+
+	// 4. Important: Ensure the parent container has a defined width/max-width
+	// For example: max-width: 100%; or width: 200px;
+}
+
+.leaderboard-section {
+	width: 100%;
+	.leaderboard-container {
+		max-width: 20.3rem;
+		.leaderboard-title {
+			color: $white-accent;
+			text-align: center;
+			font-family: $main-font;
+			font-size: 2.25rem;
+			font-style: normal;
+			font-weight: 900;
+			line-height: normal;
+			text-transform: uppercase;
+		}
+
+		.top-players-title {
+			color: $white-accent;
+			font-family: $main-font;
+			font-size: 1.25rem;
+			font-style: normal;
+			font-weight: 700;
+			line-height: normal;
+		}
+
+		.leaderboard {
+			display: flex;
+			flex-direction: column;
+			row-gap: 0.5rem;
+			.leaderboard-item {
+				width: 100%;
+				height: 3rem;
+
+				border-radius: 15px;
+				background: $white-accent;
+
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding-inline: 1rem;
+
+				.name {
+					width: 80%;
+					@include truncate-text;
+				}
+
+				.name,
+				.score {
+					color: $pink-accent;
+					font-family: $main-font;
+					font-size: 1.25rem;
+					font-style: normal;
+					font-weight: 700;
+					line-height: normal;
+				}
+			}
+		}
+	}
+}
