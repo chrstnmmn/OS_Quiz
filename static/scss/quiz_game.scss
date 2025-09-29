@@ -58,7 +58,9 @@
 
 			.option-button {
 				position: relative;
-				height: 3.7rem;
+				padding: 1rem;
+				min-height: 3rem;
+				height: auto;
 				border-radius: $border-radius;
 				background: $white-accent;
 				border-style: none;

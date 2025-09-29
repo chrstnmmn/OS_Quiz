@@ -189,6 +189,172 @@ class QuizGame {
 				],
 				correctAnswerIndex: 2, // 'lowest priority'
 			},
+			{
+    situation: "Topic 1: Concurrency and Deadlocks introduction",
+    question: "In the context of operating system design, what is the fundamental conceptual difference between multiprogramming and multiprocessing?",
+    options: [
+      "Multiprogramming manages threads, while multiprocessing manages processes.",
+      "Multiprogramming involves multiple processes on a single CPU, while multiprocessing involves multiple processes across multiple CPUs.",
+      "Multiprogramming is for personal computers, while multiprocessing is for distributed servers.",
+      "Multiprogramming requires a graphical user interface, while multiprocessing is command-line only."
+    ],
+    correctAnswerIndex: 1
+  },
+  {
+    situation: "Topic 1: Concurrency and Deadlocks introduction",
+    question: "Two processes, P1 and P2, need access to two resources, A and B. P1 acquires A and then requests B. P2 acquires B and then requests A. Both block indefinitely. This is a classic example of:",
+    options: [
+      "A race condition, because the outcome depends on who acquired which resource first.",
+      "Starvation, because both processes are being denied the resource they need.",
+      "Deadlock, because each process holds a resource the other needs, creating a circular wait.",
+      "Livelock, because both processes are actively trying to resolve the conflict but making no progress."
+    ],
+    correctAnswerIndex: 2
+  },
+  {
+    situation: "Topic 1: Concurrency and Deadlocks introduction",
+    question: "The core issue that leads to a race condition is?",
+    options: [
+      "A process with a lower priority constantly being interrupted by a process with a higher priority.",
+      "The final outcome of a computation depending on the unpredictable sequence or timing of events involving shared data.",
+      "Two processes simultaneously trying to send data to the same printer, causing a paper jam.",
+      "The operating system scheduler failing to allocate any CPU time to a process that is ready to run."
+    ],
+    correctAnswerIndex: 1
+  },
+  {
+    situation: "Topic 1: Concurrency and Deadlocks introduction",
+    question: "Which requirement for a mutual exclusion protocol is directly violated if a process is indefinitely denied access to its critical section even though it is requesting entry?",
+    options: [
+      "The requirement that only one process can be in its critical section at a time.",
+      "The requirement that a process halting outside its critical section must not interfere with others.",
+      "The requirement that there must be no deadlock or starvation.",
+      "The requirement that a process must spend a finite time in its critical section."
+    ],
+    correctAnswerIndex: 2
+  },
+  {
+    situation: "Topic 2: Competition, Cooperation by Sharing, Cooperation by communication",
+    question: "Which of the following best described the three classifications of process interaction?",
+    options: [
+      "Synchronization, Scheduling, Deadlock",
+      "Competition, Cooperation by Sharing, Cooperation by Communication",
+      "Multiprogramming, Multithreading, Multiprocessing",
+      "Deadlock, Starvation, Mutual Exclusion"
+    ],
+    correctAnswerIndex: 1
+  },
+  {
+    situation: "Topic 2: Competition, Cooperation by Sharing, Cooperation by communication",
+    question: "In process competition, what common control problems may occur?",
+    options: [
+      "Data corruption and resource allocation",
+      "Mutual exclusion, deadlock, and starvation",
+      "Synchronization and race conditions",
+      "Process creation and termination"
+    ],
+    correctAnswerIndex: 1
+  },
+  {
+    situation: "Topic 2: Competition, Cooperation by Sharing, Cooperation by communication",
+    question: "Which is an example of cooperation by sharing?",
+    options: [
+      "Two processes running independently with no awareness of each other",
+      "Multiple processes writing to a shared database",
+      "Processes sending messages to each other",
+      "Two programs running on different computers with no shared resources"
+    ],
+    correctAnswerIndex: 1
+  },
+  {
+    situation: "Topic 2: Competition, Cooperation by Sharing, Cooperation by communication",
+    question: "What is one role of the operating system in handling concurrency?",
+    options: [
+      "To stop all processes from running simultaneously",
+      "To allocate and deallocate resources for active processes",
+      "To prevent communication between processes",
+      "To eliminate process scheduling"
+    ],
+    correctAnswerIndex: 1
+  },
+  {
+    situation: "Topic 2: Competition, Cooperation by Sharing, Cooperation by communication",
+    question: "Why is protecting data coherence important in process cooperation by sharing?",
+    options: [
+      "To improve CPU speed",
+      "To ensure consistency when multiple processes access shared data",
+      "To reduce hardware costs",
+      "To avoid process scheduling"
+    ],
+    correctAnswerIndex: 1
+  },
+  {
+    situation: "Topic 3: Common Concurrency Mechanisms",
+    question: "What is the main purpose of concurrency mechanisms in operating systems?",
+    options: [
+      "To speed up hardware devices",
+      "To support multiple processes running safely at the same time",
+      "To increase memory storage",
+      "To reduce electricity usage"
+    ],
+    correctAnswerIndex: 1
+  },
+  {
+    situation: "Topic 3: Common Concurrency Mechanisms",
+    question: "Which type of semaphore is used to manage multiple identical resources?",
+    options: [
+      "Binary semaphore",
+      "Counting semaphore",
+      "Mutex lock",
+      "Spinlock"
+    ],
+    correctAnswerIndex: 1
+  },
+  {
+    situation: "Topic 3: Common Concurrency Mechanisms",
+    question: "In a binary semaphore, what does the value 1 represent?",
+    options: [
+      "Locked",
+      "Unlocked",
+      "Waiting",
+      "Terminated"
+    ],
+    correctAnswerIndex: 1
+  },
+  {
+    situation: "Topic 3: Common Concurrency Mechanisms",
+    question: "Which concurrency mechanism groups variables, procedure, and initialization code into one abstract data type to control access?",
+    options: [
+      "Monitor",
+      "Mutex",
+      "Event flag",
+      "Mailbox"
+    ],
+    correctAnswerIndex: 0
+  },
+  {
+    situation: "Topic 3: Common Concurrency Mechanisms",
+    question: "What does a spinlock do while waiting for a resource?",
+    options: [
+      "Puts the process to a stop",
+      "Executes in an infinite loop until the lock is available",
+      "Sends a message to another process",
+      "Releases the semaphore automatically"
+    ],
+    correctAnswerIndex: 1
+  },
+  {
+    situation: "Topic 4: Bonus Question.",
+    question: "Which of the following is not true about Maem?",
+    options: [
+      "Graduate of batch 2025",
+      "Graduate of Bachelor of Science in Information Technology",
+      "Graduated cum laude",
+      "Magaling magprogram"
+    ],
+    correctAnswerIndex: 2
+  }
+
 		];
 
 		// This array will hold the randomized question sequence for the current game

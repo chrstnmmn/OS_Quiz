@@ -76,7 +76,9 @@ body {
 }
 .quiz-container .question-container .optionsContainer .option-button {
   position: relative;
-  height: 3.7rem;
+  padding: 1rem;
+  min-height: 3rem;
+  height: auto;
   border-radius: 0.9375rem;
   background: #ffffff;
   border-style: none;
