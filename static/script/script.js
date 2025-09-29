@@ -167,13 +167,13 @@ class QuizGame {
 			},
 			{
 				situation:
-					"A system detects a deadlock and temporarily takes memory away from one process to give it to another.",
-				question: "Which recovery method is this?",
+					"Si Maam ay may crush, pangalan niya ay secret.",
+				question: "Anong correct spelling ng full name ni Maam ngayon?",
 				options: [
-					"Rollback",
-					"Resource Preemption",
-					"Abort processes one by one",
-					"Deadlock Avoidance",
+					"Danyca Alliah Villanueva Ordonez",
+					"Danyca Alliah Villanueva",
+					"Danica Aliyah Villanueva",
+					"Danyca Alia Villanueva",
 				],
 				correctAnswerIndex: 1, // 'Resource Preemption'
 			},
